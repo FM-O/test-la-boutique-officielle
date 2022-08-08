@@ -1,6 +1,8 @@
-const chain = "1127839561";
+const inputButton = document.getElementById('sub-button');
 
-const n = 5;
+const calcBiggestProduct = (chain, n) => {
+console.log(chain)
+console.log(n)
 
 const chainToArray = chain.split('').map(v => parseInt(v))
 
@@ -13,10 +15,13 @@ const res = chainToArray.map((val, index) => {
     });
 });
 
-const biggestProduct = Math.max(...res);
+return Math.max(...res);
+}
 
-console.log(biggestProduct)
+inputButton.addEventListener('click', () => {
+const inputChain = document.getElementById('input-c').value;
+const inputN = document.getElementById('input-n').value;
 
-document.addEventListener('DOMContentLoaded', () => {
-document.getElementById('here').innerHTML = biggestProduct.toString()
+const biggestProduct = calcBiggestProduct(inputChain, parseInt(inputN));
+document.getElementById('here').innerHTML = `Le plus gros produit des ${inputN} nombres qui se suivent de la chaine ${inputChain} est: ${biggestProduct.toString()}`
 })
